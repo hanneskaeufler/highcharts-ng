@@ -76,6 +76,8 @@ var highchartsNgConfig = {
              },
              //Whether to use HighStocks instead of HighCharts (optional). Defaults to false.
              useHighStocks: false,
+             //Whether to use HighMaps instead of HighCharts (optional). Defaults to false.
+             useHighMaps: false,
              //size (optional) if left out the chart will default to size of the div or something sensible.
              size: {
                width: 400,

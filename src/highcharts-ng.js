@@ -251,9 +251,15 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
           var config = scope.config || {};
           var mergedOptions = getMergedOptions(scope, element, config);
           var func = config.func || undefined;
-          chart = config.useHighStocks ?
-            new Highcharts.StockChart(mergedOptions, func) :
-            new Highcharts.Chart(mergedOptions, func);
+
+          if (config.useHighStocks) {
+            chart = new Highcharts.StockChart(mergedOptions, func);
+          } else if (config.useHighMaps) {
+            chart = new Highcharts.Map(mergedOptions, func);
+          } else {
+            chart = new Highcharts.Chart(mergedOptions, func);
+          }
+
           for (var i = 0; i < axisNames.length; i++) {
             if (config[axisNames[i]]) {
               processExtremes(chart, config[axisNames[i]], axisNames[i]);

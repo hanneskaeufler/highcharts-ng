@@ -82,6 +82,14 @@ describe('Module: highchartsNg', function () {
         }
       },
       element: '<highchart config="chartConfig"></highchart>'
+    },
+    'mapChartConfig': {
+      scope: {
+        chartConfig: {
+          useHighMaps: true
+        }
+      },
+      element: '<highchart config="chartConfig"></highchart>'
     }
   };
 
@@ -113,6 +121,16 @@ describe('Module: highchartsNg', function () {
 
     it('uses highstocks', function() {
       expect(usedChartConstructor).toBe('StockChart');
+    });
+  });
+
+  describe('useHighMaps', function() {
+    beforeEach(function() {
+      compileDirective('mapChartConfig');
+    });
+
+    it('uses highmaps', function() {
+      expect(usedChartConstructor).toBe('Map');
     });
   });
 
